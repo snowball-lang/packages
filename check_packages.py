@@ -15,7 +15,7 @@ for pkg in os.listdir("pkgs"):
         
         download_url = pkg_data["download_url"]
 
-        print("CHECKING " + pkg_name + "...")
+        print("CHECKING " + pkg_name + "...", end=' ')
 
         # clone the package into ".temp" folder
         os.system("git clone " + download_url + " .temp --quiet --depth 1")
@@ -23,10 +23,10 @@ for pkg in os.listdir("pkgs"):
         # See if the package has a "sn.toml" file
         if os.path.isfile(".temp/sn.toml"):
             # If it does, then it's a valid package
-            print(pkg_name + ": OK")
+            print("OK")
         else:
             # If it doesn't, then it's an invalid package
-            print(pkg_name + ": INVALID")
+            print("INVALID")
             has_error = True
         
         # Delete the ".temp" folder
