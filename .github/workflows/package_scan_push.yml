@@ -1,12 +1,12 @@
 on: push
 
 jobs:
-  default:
+  package_scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - run: python3 check_packages.py
+      - run: sh ./check_packages.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
