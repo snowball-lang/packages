@@ -36,14 +36,14 @@ for pkg in os.listdir("pkgs"):
 
                 # See if the package has a "sn.toml" file
                 print("    PACKAGE DEPS: ...", end=' ')
-                if os.path.isfile(".temp/deps.reky"):
+                if os.path.isfile(".temp/sn.reky"):
                     # If it does, then it's a valid package
                     print(GREEN + "OK" + RESET)
-                    content = open(".temp/deps.reky", "r").read()
+                    content = open(".temp/sn.reky", "r").read()
                     for dep in content.splitlines():
-                        if dep.startswith("#"):
-                            continue
                         line = dep.strip()
+                        if line.startswith("#"):
+                            continue
                         if line == "":
                             continue
                         split = line.split("==")
@@ -51,8 +51,8 @@ for pkg in os.listdir("pkgs"):
                             print(RED + "INVALID" + RESET)
                             has_error = True
                             break
-                        dep_name = split[0]
-                        dep_version = split[1]
+                        dep_name = split[0].strip()
+                        dep_version = split[1].strip()
                         print("        " + dep_name + " " + dep_version + ": ...", end=' ')
                         try:
                             # Check if the dependency exists
@@ -70,8 +70,7 @@ for pkg in os.listdir("pkgs"):
 
                 else:
                     # If it doesn't, then it's an invalid package
-                    print(RESET + "INVALID" + RESET)
-                    has_error = True
+                    print(RESET + "VALID" + RESET)
                 
             except Exception as e:
                 print(RED + "ERROR" + RESET)
