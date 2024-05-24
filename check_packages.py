@@ -31,7 +31,11 @@ for pkg in os.listdir("pkgs"):
             try:
                 print("    DOWNLOAD: ...", end=' ')
                 # clone the package into ".temp" folder
-                os.system("git clone " + download_url + " .temp --quiet --depth 1 --branch " + version)
+                exit = os.system("git clone " + download_url + " .temp --quiet --depth 1 --branch " + version)
+                if exit != 0:
+                    print(RED + "ERROR" + RESET)
+                    has_error = True
+                    continue
                 print(GREEN + "OK" + RESET)
 
                 # See if the package has a "sn.toml" file
@@ -70,7 +74,7 @@ for pkg in os.listdir("pkgs"):
 
                 else:
                     # If it doesn't, then it's an invalid package
-                    print(RESET + "VALID" + RESET)
+                    print(GREEN + "OK" + RESET)
                 
             except Exception as e:
                 print(RED + "ERROR" + RESET)
