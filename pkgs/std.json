@@ -9,7 +9,7 @@
         "core"
     ],
     "versions": [
-        "0.0.1"
+        "0.1.0"
     ],
     "description": "Standard library for the Snowball programming language",
     "license": "MIT",
