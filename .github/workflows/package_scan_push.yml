@@ -1,4 +1,8 @@
-on: push
+name: 'Package Scan (Push)'
+
+on: 
+  push:
+  pull_request:
 
 jobs:
   package_scan:
