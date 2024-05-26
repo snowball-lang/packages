@@ -1,0 +1,17 @@
+{
+    "name": "core",
+    "download_url": "https://github.com/snowball-lang/core.git",
+    "tags": [
+        "snowball",
+        "standard-library",
+        "stdlib",
+        "std",
+        "core"
+    ],
+    "versions": [
+        "0.1.0"
+    ],
+    "description": "🧠 Snowball's core standard library!",
+    "license": "MIT",
+    "web": "https://github.com/snowball-lang/core"
+}

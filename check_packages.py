@@ -31,8 +31,8 @@ for pkg in os.listdir("pkgs"):
             try:
                 print("    DOWNLOAD: ...", end=' ')
                 # clone the package into ".temp" folder
-                exit = os.system("git clone " + download_url + " .temp --quiet --depth 1 --branch " + version)
-                if exit != 0:
+                exit_code = os.system("git clone " + download_url + " .temp --quiet --depth 1 --branch " + version)
+                if exit_code != 0:
                     print(RED + "ERROR" + RESET)
                     has_error = True
                     continue
